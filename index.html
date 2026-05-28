@@ -157,22 +157,15 @@
       font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
       color: #9B8B7A; font-weight: 300;
     }
-    .phil-quote-box {
-      background: linear-gradient(145deg, #EDE5DA 0%, #D6C9B8 100%);
-      padding: 70px 50px; position: relative; overflow: hidden;
+    .phil-photo {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4;
     }
-    .phil-quote-ring {
-      position: absolute; bottom: -60px; right: -60px;
-      width: 200px; height: 200px; border-radius: 50%;
-      border: 1px solid rgba(196,181,160,0.3);
+    .phil-photo-img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
     }
-    .phil-quote {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(19px, 2vw, 24px); font-weight: 300; font-style: italic;
-      line-height: 1.8; color: #2D2D2D; text-align: center; position: relative; z-index: 1;
-      letter-spacing: 0.01em;
-    }
-    .phil-quote-line { width: 40px; height: 1px; background: #C4B5A0; margin: 28px auto 0; }
 
     /* PRODUCTS */
     .products { width: 100%; background: #F5F0E8; padding: 60px 0 100px; }
@@ -329,20 +322,19 @@
   <div class="phil-line"></div>
   <div class="phil-inner">
     <div>
-      <p class="phil-eyebrow">Our Philosophy</p>
-      <h2 class="phil-h2">Wellness that</h2>
-      <h2 class="phil-h2-italic">feels like rest.</h2>
-      <p class="phil-body">Sukha Vihara was born from a simple belief: healing should feel like a gift to yourself, not a task to complete. We draw from centuries of Eastern wellness tradition — the gentle art of gua sha, the ritual of touch — and reimagine it for the modern woman.</p>
-      <p class="phil-body">Not a regimen. A ritual. Something you look forward to at the end of the day.</p>
+      <p class="phil-eyebrow">About the Body</p>
+      <h2 class="phil-h2">The body</h2>
+      <h2 class="phil-h2-italic">remembers.</h2>
+      <p class="phil-body">The body speaks softly before it begins to ache.<br>In tension, in breath, in the quiet exhaustion we learn to ignore.</p>
+      <p class="phil-body">At Sukha Vihara, we believe wellness is not correction, but a gentle return — to poise, softness, and the wisdom already held within the body.</p>
+      <p class="phil-body phil-body-last">Through slow rituals and intentional touch, we create moments that invite you to pause, release, and listen again.</p>
       <div class="phil-tag">
         <div class="phil-tag-line"></div>
         <p class="phil-tag-text">Soft rituals for feminine wellbeing</p>
       </div>
     </div>
-    <div class="phil-quote-box">
-      <div class="phil-quote-ring"></div>
-      <p class="phil-quote">"Healing begins at night — in the quiet, in the ritual, in the softness of your own hands."</p>
-      <div class="phil-quote-line"></div>
+    <div class="phil-photo">
+      <img src="./brand-photo.jpg" alt="Sukha Vihara" class="phil-photo-img" onerror="this.style.display='none'" />
     </div>
   </div>
 </section>
