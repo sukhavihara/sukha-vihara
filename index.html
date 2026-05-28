@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sukha Vihara — Soft Ritual Living</title>
+  <meta name="description" content="Eastern wellness rituals, reimagined for the modern woman. A softer end to the day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #F5F0E8; color: #2D2D2D; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 60px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(245,240,232,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,181,160,0.3);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px; font-weight: 300; letter-spacing: 0.08em; color: #2D2D2D;
+    }
+    .nav-links { display: flex; gap: 48px; align-items: center; }
+    .nav-links a {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #7A6E65; font-weight: 300; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #2D2D2D; }
+    .nav-shop {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #2D2D2D; font-weight: 400; padding: 8px 20px;
+      border: 1px solid #C4B5A0; transition: all 0.2s;
+    }
+    .nav-shop:hover { background: #2D2D2D; color: #F5F0E8 !important; }
+
+    /* HERO */
+    .hero {
+      width: 100%; background: #F5F0E8;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 160px 40px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 700px; height: 700px; pointer-events: none;
+      background: radial-gradient(ellipse at center, rgba(196,181,160,0.18) 0%, transparent 70%);
+    }
+    .hero-ring {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 520px; height: 520px; border-radius: 50%;
+      border: 1px solid rgba(196,181,160,0.12); pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 680px; }
+    .hero-eyebrow {
+      font-size: 11px; letter-spacing: 0.38em; text-transform: uppercase;
+      color: #9B8B7A; margin-bottom: 32px; font-weight: 300;
+    }
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 7vw, 84px); font-weight: 300;
+      line-height: 1.05; color: #2D2D2D; margin-bottom: 4px;
+    }
+    .hero-h1-italic {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(52px, 7vw, 84px); font-weight: 300; font-style: italic;
+      line-height: 1.1; color: #9B8B7A; margin-bottom: 36px;
+    }
+    .hero-body {
+      font-size: 15px; line-height: 1.85; color: #7A6E65;
+      max-width: 420px; margin: 0 auto 52px; font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-dark {
+      padding: 15px 38px; background: #2D2D2D; color: #F5F0E8;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      transition: opacity 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .btn-dark:hover { opacity: 0.85; }
+    .btn-outline {
+      padding: 15px 38px; border: 1px solid #C4B5A0; color: #7A6E65;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
+    }
+    .btn-outline:hover { background: #C4B5A0; color: #fff; }
+    .hero-scroll {
+      margin-top: 64px; font-size: 10px; letter-spacing: 0.3em;
+      color: rgba(122,110,101,0.4); text-transform: uppercase;
+    }
+
+    /* PHILOSOPHY */
+    .philosophy {
+      width: 100%; background: #F5F0E8;
+      padding: 40px 0 80px; position: relative; overflow: hidden;
+    }
+    .phil-line {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(196,181,160,0.5));
+    }
+    .phil-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 60px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .phil-eyebrow {
+      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: #9B8B7A; margin-bottom: 24px; font-weight: 300;
+    }
+    .phil-h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(38px, 4vw, 56px); font-weight: 300;
+      line-height: 1.15; color: #2D2D2D; margin-bottom: 8px;
+    }
+    .phil-h2-italic {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(38px, 4vw, 56px); font-weight: 300; font-style: italic;
+      line-height: 1.15; color: #9B8B7A; margin-bottom: 40px;
+    }
+    .phil-body { font-size: 15px; line-height: 1.9; color: #7A6E65; font-weight: 300; margin-bottom: 24px; }
+    .phil-tag { display: flex; align-items: center; gap: 16px; }
+    .phil-tag-line { width: 40px; height: 1px; background: #C4B5A0; }
+    .phil-tag-text {
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #9B8B7A; font-weight: 300;
+    }
+    .phil-quote-box {
+      background: linear-gradient(145deg, #EDE5DA 0%, #D6C9B8 100%);
+      padding: 70px 50px; position: relative; overflow: hidden;
+    }
+    .phil-quote-ring {
+      position: absolute; bottom: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      border: 1px solid rgba(196,181,160,0.3);
+    }
+    .phil-quote {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(20px, 2.2vw, 26px); font-weight: 300; font-style: italic;
+      line-height: 1.65; color: #2D2D2D; text-align: center; position: relative; z-index: 1;
+    }
+    .phil-quote-line { width: 40px; height: 1px; background: #C4B5A0; margin: 28px auto 0; }
+
+    /* PRODUCTS */
+    .products { width: 100%; background: #F5F0E8; padding: 60px 0 100px; }
+    .prod-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+    .prod-header { text-align: center; margin-bottom: 64px; }
+    .prod-eyebrow {
+      font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: #9B8B7A; margin-bottom: 20px; font-weight: 300;
+    }
+    .prod-h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(38px, 4vw, 52px); font-weight: 300;
+      line-height: 1.15; color: #2D2D2D; margin-bottom: 8px;
+    }
+    .prod-h2-italic {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(38px, 4vw, 52px); font-weight: 300; font-style: italic;
+      line-height: 1.15; color: #9B8B7A; margin-bottom: 24px;
+    }
+    .prod-desc { font-size: 14px; line-height: 1.9; color: #7A6E65; max-width: 400px; margin: 0 auto; font-weight: 300; }
+    .prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-bottom: 56px; }
+    .prod-card { cursor: pointer; transition: transform 0.3s ease; }
+    .prod-card:hover { transform: translateY(-4px); }
+    .prod-img {
+      aspect-ratio: 3/4; margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .prod-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: #2D2D2D; color: #F5F0E8;
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 5px 12px; font-family: 'Inter', sans-serif;
+    }
+    .prod-ring1 {
+      position: absolute; bottom: -30px; right: -30px;
+      width: 120px; height: 120px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+    .prod-ring2 {
+      position: absolute; bottom: -50px; right: -50px;
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .prod-subtitle {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #9B8B7A; margin-bottom: 6px; font-weight: 300;
+    }
+    .prod-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px; font-weight: 300; color: #2D2D2D; margin-bottom: 8px;
+    }
+    .prod-price { font-size: 14px; color: #7A6E65; font-weight: 300; }
+    .prod-cta { text-align: center; }
+
+    /* FOOTER */
+    footer { width: 100%; background: #2D2D2D; padding: 80px 0 40px; color: #F5F0E8; }
+    .foot-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+    .foot-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 64px;
+    }
+    .foot-brand-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 28px; font-weight: 300; letter-spacing: 0.05em;
+      color: #F5F0E8; margin-bottom: 16px;
+    }
+    .foot-brand-desc {
+      font-size: 13px; line-height: 1.85; color: rgba(245,240,232,0.5);
+      font-weight: 300; max-width: 260px;
+    }
+    .foot-col-title {
+      font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(245,240,232,0.4); margin-bottom: 20px; font-weight: 300;
+    }
+    .foot-link {
+      display: block; font-size: 13px; color: rgba(245,240,232,0.65);
+      font-weight: 300; margin-bottom: 12px; transition: color 0.2s;
+    }
+    .foot-link:hover { color: #F5F0E8; }
+    .foot-desc { font-size: 13px; line-height: 1.7; color: rgba(245,240,232,0.5); font-weight: 300; margin-bottom: 20px; }
+    .foot-input {
+      width: 100%; background: rgba(245,240,232,0.08);
+      border: 1px solid rgba(245,240,232,0.15); padding: 11px 16px;
+      color: #F5F0E8; font-size: 12px; outline: none;
+      font-family: 'Inter', sans-serif; margin-bottom: 10px;
+    }
+    .foot-btn {
+      width: 100%; background: #C4B5A0; color: #2D2D2D;
+      border: none; padding: 11px; font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .foot-btn:hover { opacity: 0.85; }
+    .foot-divider { height: 1px; background: rgba(245,240,232,0.1); margin-bottom: 32px; }
+    .foot-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .foot-copy { font-size: 11px; color: rgba(245,240,232,0.3); font-weight: 300; letter-spacing: 0.05em; }
+    .foot-tagline { font-size: 11px; color: rgba(245,240,232,0.3); font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 24px 80px; }
+      .phil-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 40px; }
+      .prod-inner { padding: 0 24px; }
+      .prod-grid { grid-template-columns: repeat(2,1fr); }
+      .foot-inner { padding: 0 24px; }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 500px) {
+      .prod-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .foot-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">Sukha Vihara</a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#products">Shop</a>
+    <a href="#footer">Contact</a>
+    <a class="nav-shop" href="https://sukha-glory-2.myshopify.com/" target="_blank">Shop</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Soft Ritual Living · Eastern Wellness</p>
+    <h1 class="hero-h1">Healing begins</h1>
+    <h1 class="hero-h1-italic">at night.</h1>
+    <p class="hero-body">Eastern wellness rituals, reimagined for the modern woman. A softer end to the day.</p>
+    <div class="hero-btns">
+      <a class="btn-dark" href="https://sukha-glory-2.myshopify.com/" target="_blank">Shop the Rituals</a>
+      <a class="btn-outline" href="#philosophy">Our Story</a>
+    </div>
+    <p class="hero-scroll">↓ &nbsp; scroll</p>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="phil-line"></div>
+  <div class="phil-inner">
+    <div>
+      <p class="phil-eyebrow">Our Philosophy</p>
+      <h2 class="phil-h2">Wellness that</h2>
+      <h2 class="phil-h2-italic">feels like rest.</h2>
+      <p class="phil-body">Sukha Vihara was born from a simple belief: healing should feel like a gift to yourself, not a task to complete. We draw from centuries of Eastern wellness tradition — the gentle art of gua sha, the ritual of touch — and reimagine it for the modern woman.</p>
+      <p class="phil-body">Not a regimen. A ritual. Something you look forward to at the end of the day.</p>
+      <div class="phil-tag">
+        <div class="phil-tag-line"></div>
+        <p class="phil-tag-text">Soft rituals for feminine wellbeing</p>
+      </div>
+    </div>
+    <div class="phil-quote-box">
+      <div class="phil-quote-ring"></div>
+      <p class="phil-quote">"Healing begins at night — in the quiet, in the ritual, in the softness of your own hands."</p>
+      <div class="phil-quote-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="prod-inner">
+    <div class="prod-header">
+      <p class="prod-eyebrow">The Collection</p>
+      <h2 class="prod-h2">The Ritual</h2>
+      <h2 class="prod-h2-italic">Collection</h2>
+      <p class="prod-desc">Each piece is chosen to slow you down, to bring you home to your body.</p>
+    </div>
+    <div class="prod-grid">
+      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+        <div class="prod-card">
+          <div class="prod-img" style="background:#EDE5DA">
+            <div class="prod-badge">Bestseller</div>
+            <div class="prod-ring1"></div><div class="prod-ring2"></div>
+          </div>
+          <p class="prod-subtitle">Facial Sculpting Ritual</p>
+          <h3 class="prod-name">Rose Quartz Gua Sha</h3>
+          <p class="prod-price">$48</p>
+        </div>
+      </a>
+      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+        <div class="prod-card">
+          <div class="prod-img" style="background:#D6C9B8">
+            <div class="prod-badge">New</div>
+            <div class="prod-ring1"></div><div class="prod-ring2"></div>
+          </div>
+          <p class="prod-subtitle">Morning Lymphatic Ritual</p>
+          <h3 class="prod-name">Jade Roller Set</h3>
+          <p class="prod-price">$62</p>
+        </div>
+      </a>
+      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+        <div class="prod-card">
+          <div class="prod-img" style="background:#C9B8A4">
+            <div class="prod-ring1"></div><div class="prod-ring2"></div>
+          </div>
+          <p class="prod-subtitle">Nourishing Evening Elixir</p>
+          <h3 class="prod-name">Golden Facial Oil</h3>
+          <p class="prod-price">$78</p>
+        </div>
+      </a>
+      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+        <div class="prod-card">
+          <div class="prod-img" style="background:#BBA896">
+            <div class="prod-badge">Most Loved</div>
+            <div class="prod-ring1"></div><div class="prod-ring2"></div>
+          </div>
+          <p class="prod-subtitle">Complete Evening Practice</p>
+          <h3 class="prod-name">The Night Ritual Kit</h3>
+          <p class="prod-price">$145</p>
+        </div>
+      </a>
+    </div>
+    <div class="prod-cta">
+      <a class="btn-dark" href="https://sukha-glory-2.myshopify.com/" target="_blank">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand-name">Sukha Vihara</p>
+        <p class="foot-brand-desc">Eastern wellness rituals, reimagined for the modern woman. A softer end to the day.</p>
+      </div>
+      <div>
+        <p class="foot-col-title">Shop</p>
+        <a class="foot-link" href="https://sukha-glory-2.myshopify.com/" target="_blank">All Products</a>
+        <a class="foot-link" href="https://sukha-glory-2.myshopify.com/" target="_blank">Gua Sha</a>
+        <a class="foot-link" href="https://sukha-glory-2.myshopify.com/" target="_blank">Facial Oils</a>
+        <a class="foot-link" href="https://sukha-glory-2.myshopify.com/" target="_blank">Ritual Kits</a>
+        <a class="foot-link" href="https://sukha-glory-2.myshopify.com/" target="_blank">Gift Sets</a>
+      </div>
+      <div>
+        <p class="foot-col-title">About</p>
+        <a class="foot-link" href="#philosophy">Our Story</a>
+        <a class="foot-link" href="#philosophy">Philosophy</a>
+        <a class="foot-link" href="#philosophy">Ingredients</a>
+        <a class="foot-link" href="#philosophy">Sustainability</a>
+      </div>
+      <div>
+        <p class="foot-col-title">The Ritual Letter</p>
+        <p class="foot-desc">Soft notes on ritual, rest, and the art of slowing down.</p>
+        <input class="foot-input" type="email" placeholder="your@email.com" />
+        <button class="foot-btn">Subscribe</button>
+      </div>
+    </div>
+    <div class="foot-divider"></div>
+    <div class="foot-bottom">
+      <p class="foot-copy">© 2025 Sukha Vihara. All rights reserved.</p>
+      <p class="foot-tagline">Soft Ritual Living</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+</body>
+</html>
