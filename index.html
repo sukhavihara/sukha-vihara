@@ -11,133 +11,51 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Work Sans', sans-serif; background: #F5F0E8; color: #2D2D2D; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1, "liga" 1; }
+    body { font-family: 'Work Sans', sans-serif; background: #F5F0E8; color: #2D2D2D; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     a { text-decoration: none; color: inherit; }
 
     /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 60px; height: 72px;
-      display: flex; align-items: center; justify-content: space-between;
-      transition: all 0.4s ease;
-    }
-    nav.scrolled {
-      background: rgba(245,240,232,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(196,181,160,0.3);
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 20px; font-weight: 400; letter-spacing: 0.12em; color: #F5F0E8; transition: color 0.4s;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 60px; height: 72px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; }
+    nav.scrolled { background: rgba(245,240,232,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(196,181,160,0.3); }
+    .nav-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 400; letter-spacing: 0.12em; color: #F5F0E8; transition: color 0.4s; }
     nav.scrolled .nav-logo { color: #2D2D2D; }
     .nav-links { display: flex; gap: 48px; align-items: center; }
-    .nav-links a {
-      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-      color: rgba(245,240,232,0.7); font-weight: 300; transition: color 0.2s;
-    }
+    .nav-links a { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,240,232,0.7); font-weight: 300; transition: color 0.2s; }
     .nav-links a:hover { color: #F5F0E8; }
     nav.scrolled .nav-links a { color: #7A6E65; }
     nav.scrolled .nav-links a:hover { color: #2D2D2D; }
-    .nav-cart {
-      display: flex; align-items: center;
-      color: rgba(245,240,232,0.75); transition: color 0.2s;
-    }
+    .nav-cart { display: flex; align-items: center; color: rgba(245,240,232,0.75); transition: color 0.2s; }
     .nav-cart:hover { color: #F5F0E8; }
     nav.scrolled .nav-cart { color: #7A6E65; }
     nav.scrolled .nav-cart:hover { color: #2D2D2D; }
 
     /* HERO */
-    .hero {
-      width: 100%; min-height: 100vh; background: #1a1410;
-      display: flex; align-items: flex-end;
-      position: relative; overflow: hidden;
-    }
-    .hero-video {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover; z-index: 0;
-    }
-    .hero-overlay {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;
-      background: linear-gradient(to bottom, rgba(10,7,5,0.15) 0%, rgba(10,7,5,0.25) 40%, rgba(10,7,5,0.65) 100%);
-    }
-    .hero-content-wrap {
-      position: relative; z-index: 3;
-      display: flex; align-items: flex-end;
-      width: 100%; padding: 0 60px 80px; gap: 0;
-    }
+    .hero { width: 100%; min-height: 100vh; background: #1a1410; display: flex; align-items: flex-end; position: relative; overflow: hidden; }
+    .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; background: linear-gradient(to bottom, rgba(10,7,5,0.15) 0%, rgba(10,7,5,0.25) 40%, rgba(10,7,5,0.65) 100%); }
+    .hero-content-wrap { position: relative; z-index: 3; display: flex; align-items: flex-end; width: 100%; padding: 0 60px 80px; }
     .hero-brand-col { width: 10%; min-width: 100px; flex-shrink: 0; padding-bottom: 4px; }
-    .hero-brand-name {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 12px; font-weight: 400; letter-spacing: 0.18em;
-      color: rgba(245,240,232,0.55);
-      writing-mode: vertical-rl; text-orientation: mixed;
-      transform: rotate(180deg); display: block;
-    }
+    .hero-brand-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 12px; font-weight: 400; letter-spacing: 0.18em; color: rgba(245,240,232,0.55); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); display: block; }
     .hero-text-col { max-width: 500px; }
-    .hero-eyebrow {
-      font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase;
-      color: rgba(245,240,232,0.45); margin-bottom: 18px; font-weight: 300;
-      display: block; font-family: 'Work Sans', sans-serif;
-    }
-    .hero-h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(42px, 5.5vw, 72px); font-weight: 300;
-      line-height: 1.08; color: #F5F0E8; margin-bottom: 20px;
-      letter-spacing: -0.01em;
-    }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(245,240,232,0.45); margin-bottom: 18px; font-weight: 300; display: block; }
+    .hero-h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(42px, 5.5vw, 72px); font-weight: 300; line-height: 1.08; color: #F5F0E8; margin-bottom: 20px; letter-spacing: -0.01em; }
     .hero-h1 em { font-style: italic; color: rgba(210,196,178,0.9); }
-    .hero-body {
-      font-size: 13px; line-height: 1.75; color: rgba(245,240,232,0.6);
-      max-width: 360px; margin-bottom: 36px; font-weight: 300;
-      letter-spacing: 0.01em;
-    }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 14px;
-      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(245,240,232,0.85); font-weight: 300;
-      border: 1px solid rgba(245,240,232,0.4);
-      padding: 13px 24px; transition: all 0.3s ease;
-      font-family: 'Work Sans', sans-serif;
-    }
+    .hero-body { font-size: 13px; line-height: 1.75; color: rgba(245,240,232,0.6); max-width: 360px; margin-bottom: 36px; font-weight: 300; letter-spacing: 0.01em; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 14px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,240,232,0.85); font-weight: 300; border: 1px solid rgba(245,240,232,0.4); padding: 13px 24px; transition: all 0.3s ease; }
     .hero-cta:hover { background: rgba(245,240,232,0.08); border-color: rgba(245,240,232,0.65); color: #F5F0E8; }
 
     /* PHILOSOPHY */
     .philosophy { width: 100%; background: #F5F0E8; padding: 80px 0; position: relative; overflow: hidden; }
-    .phil-line {
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 1px; height: 60px;
-      background: linear-gradient(to bottom, transparent, rgba(196,181,160,0.5));
-    }
-    .phil-inner {
-      max-width: 1100px; margin: 0 auto; padding: 0 60px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .phil-eyebrow {
-      font-size: 9px; letter-spacing: 0.45em; text-transform: uppercase;
-      color: #9B8B7A; margin-bottom: 20px; font-weight: 300;
-    }
-    .phil-h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(38px, 4.5vw, 58px); font-weight: 300;
-      line-height: 1.05; color: #2D2D2D; margin-bottom: 2px;
-      letter-spacing: -0.01em;
-    }
-    .phil-h2-italic {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(38px, 4.5vw, 58px); font-weight: 300; font-style: italic;
-      line-height: 1.05; color: #9B8B7A; margin-bottom: 32px;
-      letter-spacing: -0.005em;
-    }
-    .phil-body {
-      font-size: 13px; line-height: 1.75; color: #7A6E65;
-      font-weight: 300; margin-bottom: 14px; letter-spacing: 0.01em;
-    }
-    .phil-tag { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
-    .phil-tag-line { width: 32px; height: 1px; background: #C4B5A0; }
+    .phil-line { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, rgba(196,181,160,0.5)); }
+    .phil-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px; display: grid; grid-template-columns: 1fr 3fr; gap: 60px; align-items: center; }
+    .phil-eyebrow { font-size: 9px; letter-spacing: 0.45em; text-transform: uppercase; color: #9B8B7A; margin-bottom: 16px; font-weight: 300; }
+    .phil-h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(34px, 4vw, 52px); font-weight: 300; line-height: 1.05; color: #2D2D2D; margin-bottom: 2px; letter-spacing: -0.01em; }
+    .phil-h2-italic { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(34px, 4vw, 52px); font-weight: 300; font-style: italic; line-height: 1.05; color: #9B8B7A; margin-bottom: 24px; letter-spacing: -0.005em; }
+    .phil-body { font-size: 12px; line-height: 1.8; color: #7A6E65; font-weight: 300; letter-spacing: 0.01em; margin-bottom: 20px; }
+    .phil-tag { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+    .phil-tag-line { width: 28px; height: 1px; background: #C4B5A0; }
     .phil-tag-text { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: #9B8B7A; font-weight: 300; }
-    .phil-photo { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+    .phil-photo { position: relative; overflow: hidden; aspect-ratio: 3/2; }
     .phil-photo-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 
     /* PRODUCTS */
@@ -152,23 +70,14 @@
     .prod-card { cursor: pointer; transition: transform 0.3s ease; }
     .prod-card:hover { transform: translateY(-4px); }
     .prod-img { aspect-ratio: 3/4; margin-bottom: 16px; position: relative; overflow: hidden; }
-    .prod-badge {
-      position: absolute; top: 16px; left: 16px;
-      background: #2D2D2D; color: #F5F0E8;
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-      padding: 5px 12px; font-family: 'Work Sans', sans-serif;
-    }
+    .prod-badge { position: absolute; top: 16px; left: 16px; background: #2D2D2D; color: #F5F0E8; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 12px; }
     .prod-ring1 { position: absolute; bottom: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); }
     .prod-ring2 { position: absolute; bottom: -50px; right: -50px; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
     .prod-subtitle { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #9B8B7A; margin-bottom: 5px; font-weight: 300; }
     .prod-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-weight: 300; font-style: italic; color: #2D2D2D; margin-bottom: 6px; letter-spacing: 0.01em; line-height: 1.25; }
     .prod-price { font-size: 11px; color: #9B8B7A; font-weight: 300; letter-spacing: 0.08em; }
     .prod-cta { text-align: center; }
-    .btn-dark {
-      padding: 13px 36px; background: #2D2D2D; color: #F5F0E8;
-      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-      transition: opacity 0.2s; font-family: 'Work Sans', sans-serif;
-    }
+    .btn-dark { padding: 13px 36px; background: #2D2D2D; color: #F5F0E8; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; transition: opacity 0.2s; }
     .btn-dark:hover { opacity: 0.8; }
 
     /* FOOTER */
@@ -181,8 +90,8 @@
     .foot-link { display: block; font-size: 12px; color: rgba(245,240,232,0.65); font-weight: 300; margin-bottom: 10px; transition: color 0.2s; }
     .foot-link:hover { color: #F5F0E8; }
     .foot-desc { font-size: 12px; line-height: 1.7; color: rgba(245,240,232,0.5); font-weight: 300; margin-bottom: 16px; }
-    .foot-input { width: 100%; background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.15); padding: 10px 14px; color: #F5F0E8; font-size: 12px; outline: none; font-family: 'Work Sans', sans-serif; margin-bottom: 8px; }
-    .foot-btn { width: 100%; background: #C4B5A0; color: #2D2D2D; border: none; padding: 10px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; font-family: 'Work Sans', sans-serif; transition: opacity 0.2s; }
+    .foot-input { width: 100%; background: rgba(245,240,232,0.08); border: 1px solid rgba(245,240,232,0.15); padding: 10px 14px; color: #F5F0E8; font-size: 12px; outline: none; margin-bottom: 8px; }
+    .foot-btn { width: 100%; background: #C4B5A0; color: #2D2D2D; border: none; padding: 10px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
     .foot-btn:hover { opacity: 0.85; }
     .foot-divider { height: 1px; background: rgba(245,240,232,0.1); margin-bottom: 28px; }
     .foot-bottom { display: flex; justify-content: space-between; align-items: center; }
@@ -194,7 +103,7 @@
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hero-content-wrap { padding: 0 24px 60px; }
-      .phil-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 40px; }
+      .phil-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 32px; }
       .prod-inner { padding: 0 24px; }
       .prod-grid { grid-template-columns: repeat(2,1fr); }
       .foot-inner { padding: 0 24px; }
@@ -240,7 +149,7 @@
     <div class="hero-text-col">
       <span class="hero-eyebrow">Eastern Wellness · Soft Ritual Living</span>
       <h1 class="hero-h1">Build your own<br><em>sanctuary.</em></h1>
-      <p class="hero-body">Not a routine, but a sanctuary you return to daily.<br>A quiet space for the body to soften, release, and regain its poise.</p>
+      <p class="hero-body">Not a routine, but a sanctuary you return to daily. A quiet space for the body to soften, release, and regain its poise.</p>
       <a class="hero-cta" href="https://sukha-glory-2.myshopify.com/" target="_blank">Discover the Rituals &nbsp;→</a>
     </div>
   </div>
@@ -254,9 +163,7 @@
       <p class="phil-eyebrow">About the Body</p>
       <h2 class="phil-h2">The body</h2>
       <h2 class="phil-h2-italic">remembers.</h2>
-      <p class="phil-body">The body speaks softly before it begins to ache.<br>In tension, in breath, in the quiet exhaustion we learn to ignore.</p>
-      <p class="phil-body">At Sukha Vihara, we believe wellness is not correction, but a gentle return — to poise, softness, and the wisdom already held within the body.</p>
-      <p class="phil-body">Through slow rituals and intentional touch, we create moments that invite you to pause, release, and listen again.</p>
+      <p class="phil-body">The body speaks softly before it begins to ache. In tension, in breath, in the quiet exhaustion we learn to ignore. At Sukha Vihara, we believe wellness is not correction, but a gentle return — to poise, softness, and the wisdom already held within the body. Through slow rituals and intentional touch, we create moments that invite you to pause, release, and listen again.</p>
       <div class="phil-tag">
         <div class="phil-tag-line"></div>
         <p class="phil-tag-text">Soft rituals for feminine wellbeing</p>
@@ -280,10 +187,7 @@
     <div class="prod-grid">
       <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
         <div class="prod-card">
-          <div class="prod-img" style="background:#EDE5DA">
-            <div class="prod-badge">Bestseller</div>
-            <div class="prod-ring1"></div><div class="prod-ring2"></div>
-          </div>
+          <div class="prod-img" style="background:#EDE5DA"><div class="prod-badge">Bestseller</div><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
           <p class="prod-subtitle">Facial Sculpting Ritual</p>
           <h3 class="prod-name">Rose Quartz Gua Sha</h3>
           <p class="prod-price">$48</p>
@@ -291,10 +195,7 @@
       </a>
       <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
         <div class="prod-card">
-          <div class="prod-img" style="background:#D6C9B8">
-            <div class="prod-badge">New</div>
-            <div class="prod-ring1"></div><div class="prod-ring2"></div>
-          </div>
+          <div class="prod-img" style="background:#D6C9B8"><div class="prod-badge">New</div><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
           <p class="prod-subtitle">Morning Lymphatic Ritual</p>
           <h3 class="prod-name">Jade Roller Set</h3>
           <p class="prod-price">$62</p>
@@ -302,9 +203,7 @@
       </a>
       <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
         <div class="prod-card">
-          <div class="prod-img" style="background:#C9B8A4">
-            <div class="prod-ring1"></div><div class="prod-ring2"></div>
-          </div>
+          <div class="prod-img" style="background:#C9B8A4"><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
           <p class="prod-subtitle">Nourishing Evening Elixir</p>
           <h3 class="prod-name">Golden Facial Oil</h3>
           <p class="prod-price">$78</p>
@@ -312,10 +211,7 @@
       </a>
       <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
         <div class="prod-card">
-          <div class="prod-img" style="background:#BBA896">
-            <div class="prod-badge">Most Loved</div>
-            <div class="prod-ring1"></div><div class="prod-ring2"></div>
-          </div>
+          <div class="prod-img" style="background:#BBA896"><div class="prod-badge">Most Loved</div><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
           <p class="prod-subtitle">Complete Evening Practice</p>
           <h3 class="prod-name">The Night Ritual Kit</h3>
           <p class="prod-price">$145</p>
