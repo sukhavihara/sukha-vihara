@@ -68,18 +68,38 @@
     .prod-h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(38px, 4vw, 52px); font-weight: 300; line-height: 1.1; color: #2D2D2D; margin-bottom: 4px; }
     .prod-h2-italic { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(38px, 4vw, 52px); font-weight: 300; font-style: italic; line-height: 1.1; color: #9B8B7A; margin-bottom: 20px; }
     .prod-desc { font-size: 13px; line-height: 1.75; color: #7A6E65; max-width: 400px; margin: 0 auto; font-weight: 300; }
-    .prod-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-bottom: 56px; }
-    .prod-card { cursor: pointer; transition: transform 0.3s ease; }
-    .prod-card:hover { transform: translateY(-4px); }
-    .prod-img { aspect-ratio: 3/4; margin-bottom: 16px; position: relative; overflow: hidden; }
+
+    /* CAROUSEL */
+    .carousel-wrap { position: relative; overflow: hidden; }
+    .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.25,0.1,0.25,1); }
+    .prod-card {
+      flex: 0 0 calc(50% - 16px); margin-right: 32px;
+      cursor: pointer;
+    }
+    .prod-card:hover .prod-img { transform: scale(1.02); }
+    .prod-img { aspect-ratio: 3/4; margin-bottom: 20px; position: relative; overflow: hidden; transition: transform 0.4s ease; }
     .prod-badge { position: absolute; top: 16px; left: 16px; background: #2D2D2D; color: #F5F0E8; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 12px; }
     .prod-ring1 { position: absolute; bottom: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); }
     .prod-ring2 { position: absolute; bottom: -50px; right: -50px; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
-    .prod-subtitle { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: #9B8B7A; margin-bottom: 5px; font-weight: 300; }
-    .prod-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-weight: 300; font-style: italic; color: #2D2D2D; margin-bottom: 6px; letter-spacing: 0.01em; line-height: 1.25; }
-    .prod-price { font-size: 11px; color: #9B8B7A; font-weight: 300; letter-spacing: 0.08em; }
-    .prod-cta { text-align: center; }
-    .btn-dark { padding: 13px 36px; background: #2D2D2D; color: #F5F0E8; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; transition: opacity 0.2s; }
+    .prod-number { font-size: 9px; letter-spacing: 0.3em; color: #C4B5A0; font-weight: 300; margin-bottom: 20px; }
+    .prod-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 300; color: #2D2D2D; margin-bottom: 6px; letter-spacing: 0.01em; line-height: 1.2; }
+    .prod-cn { font-size: 11px; color: #9B8B7A; font-weight: 300; margin-bottom: 16px; letter-spacing: 0.05em; }
+    .prod-keywords { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: #B5A898; font-weight: 300; margin-bottom: 20px; }
+    .prod-tagline { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; font-style: italic; font-weight: 300; color: #7A6E65; line-height: 1.6; }
+
+    /* Carousel nav */
+    .carousel-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 48px; }
+    .carousel-arrows { display: flex; gap: 16px; }
+    .carousel-btn {
+      width: 48px; height: 48px; border: 1px solid #C4B5A0; background: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; color: #7A6E65;
+    }
+    .carousel-btn:hover { background: #2D2D2D; border-color: #2D2D2D; color: #F5F0E8; }
+    .carousel-dots { display: flex; gap: 8px; align-items: center; }
+    .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: #C4B5A0; cursor: pointer; transition: background 0.2s; }
+    .carousel-dot.active { background: #2D2D2D; }
+    .btn-dark { padding: 13px 36px; background: #2D2D2D; color: #F5F0E8; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; transition: opacity 0.2s; display: inline-block; }
     .btn-dark:hover { opacity: 0.8; }
 
     /* FOOTER */
@@ -202,46 +222,76 @@
 <section class="products" id="products">
   <div class="prod-inner">
     <div class="prod-header">
-      <p class="prod-eyebrow">The Collection</p>
+      <p class="prod-eyebrow">Ritual Collection</p>
       <h2 class="prod-h2">The Ritual</h2>
       <h2 class="prod-h2-italic">Collection</h2>
-      <p class="prod-desc">Each piece is chosen to slow you down, to bring you home to your body.</p>
+      <p class="prod-desc" style="margin-bottom:8px;">A collection of rituals for returning to yourself.</p>
+      <p class="prod-desc" style="font-style:italic; color:#9B8B7A; font-size:12px;">For the moments when the body asks to be heard.</p>
     </div>
-    <div class="prod-grid">
-      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="carouselTrack">
+
         <div class="prod-card">
-          <div class="prod-img" style="background:#EDE5DA"><div class="prod-badge">Bestseller</div><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
-          <p class="prod-subtitle">Facial Sculpting Ritual</p>
-          <h3 class="prod-name">Rose Quartz Gua Sha</h3>
-          <p class="prod-price">$48</p>
+          <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit;display:block">
+            <div class="prod-img" style="background:#E8E0D4"><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
+            <p class="prod-number">01</p>
+            <h3 class="prod-name">Quiet Mornings</h3>
+            <p class="prod-keywords">Clarity · Presence · Intention</p>
+            <p class="prod-tagline">Begin the day with intention.</p>
+            <p class="prod-tagline" style="font-style:normal; font-size:12px; margin-top:8px; color:#9B8B7A;">A gentle awakening for the scalp, the senses, and the mind.</p>
+          </a>
         </div>
-      </a>
-      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+
         <div class="prod-card">
-          <div class="prod-img" style="background:#D6C9B8"><div class="prod-badge">New</div><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
-          <p class="prod-subtitle">Morning Lymphatic Ritual</p>
-          <h3 class="prod-name">Jade Roller Set</h3>
-          <p class="prod-price">$62</p>
+          <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit;display:block">
+            <div class="prod-img" style="background:#D6C9B8"><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
+            <p class="prod-number">02</p>
+            <h3 class="prod-name">Facial Release</h3>
+            <p class="prod-keywords">Softness · Ease · Renewal</p>
+            <p class="prod-tagline">Softening tension held beneath the skin.</p>
+            <p class="prod-tagline" style="font-style:normal; font-size:12px; margin-top:8px; color:#9B8B7A;">A ritual of touch that encourages circulation, ease, and presence.</p>
+          </a>
         </div>
-      </a>
-      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+
         <div class="prod-card">
-          <div class="prod-img" style="background:#C9B8A4"><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
-          <p class="prod-subtitle">Nourishing Evening Elixir</p>
-          <h3 class="prod-name">Golden Facial Oil</h3>
-          <p class="prod-price">$78</p>
+          <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit;display:block">
+            <div class="prod-img" style="background:#C9B8A4"><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
+            <p class="prod-number">03</p>
+            <h3 class="prod-name">Body Poise</h3>
+            <p class="prod-keywords">Strength · Alignment · Grace</p>
+            <p class="prod-tagline">Returning ease to a body that carries the weight of everyday life.</p>
+            <p class="prod-tagline" style="font-style:normal; font-size:12px; margin-top:8px; color:#9B8B7A;">Designed to restore movement, alignment, and quiet strength.</p>
+          </a>
         </div>
-      </a>
-      <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit">
+
         <div class="prod-card">
-          <div class="prod-img" style="background:#BBA896"><div class="prod-badge">Most Loved</div><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
-          <p class="prod-subtitle">Complete Evening Practice</p>
-          <h3 class="prod-name">The Night Ritual Kit</h3>
-          <p class="prod-price">$145</p>
+          <a href="https://sukha-glory-2.myshopify.com/" target="_blank" style="color:inherit;display:block">
+            <div class="prod-img" style="background:#BBA896"><div class="prod-ring1"></div><div class="prod-ring2"></div></div>
+            <p class="prod-number">04</p>
+            <h3 class="prod-name">Evening Restoration</h3>
+            <p class="prod-keywords">Rest · Stillness · Recovery</p>
+            <p class="prod-tagline">A ritual for unwinding, restoring, and letting go.</p>
+            <p class="prod-tagline" style="font-style:normal; font-size:12px; margin-top:8px; color:#9B8B7A;">An invitation to slow down and return to yourself.</p>
+          </a>
         </div>
-      </a>
+
+      </div>
     </div>
-    <div class="prod-cta">
+
+    <div class="carousel-nav">
+      <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-arrows">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15,18 9,12 15,6"/></svg>
+        </button>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:48px;">
       <a class="btn-dark" href="https://sukha-glory-2.myshopify.com/" target="_blank">View All Products</a>
     </div>
   </div>
@@ -286,10 +336,46 @@
 </footer>
 
 <script>
+  // Nav scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const cards = track.querySelectorAll('.prod-card');
+  const dotsWrap = document.getElementById('carouselDots');
+  const total = cards.length;
+  const perPage = 2;
+  const pages = Math.ceil(total / perPage);
+  let current = 0;
+
+  // Create dots
+  for (let i = 0; i < pages; i++) {
+    const d = document.createElement('div');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  }
+
+  function getCardWidth() {
+    return cards[0].offsetWidth + 32; // card width + margin
+  }
+
+  function goTo(page) {
+    current = ((page % pages) + pages) % pages;
+    track.style.transform = `translateX(-${current * perPage * getCardWidth()}px)`;
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+
+  // Auto-play
+  setInterval(() => goTo(current + 1), 4000);
 </script>
 </body>
 </html>
