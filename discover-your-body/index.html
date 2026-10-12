@@ -859,17 +859,19 @@ renderTypes();showDetail("balanced",false);
     let yin0,yin1,yang0,yang1;
     if(ph<.5){yin0=T;yin1=head;yang0=B+ph*2*Math.PI;yang1=TT}
     else{yin0=T+(ph-.5)*2*Math.PI;yin1=B;yang0=B;yang1=head}
-    /* the gnomon's shadow: from the pole's foot toward the year-point; long when the sun is low, short when high */
+    /* Noon gnomon at ~34.5°N (Dengfeng). The sun stays due south (back-right in the picture); only its height changes.
+       Shadow always points away from the sun (front-left, north); its length = pole height / tan(noon altitude):
+       ≈0.2× at the summer solstice, ≈1.6× at the winter solstice, as the Zhoubi Suanjing records. */
+    const decl=23.44*Math.cos(ph*2*Math.PI), alt=(90-34.5+decl)*Math.PI/180, ratio=1/Math.tan(alt);
     const yang=(1+Math.cos(ph*2*Math.PI))/2, bx=608/1215*W, by=396/1021*H;
-    const [ex,ey]=pt(head), f=.38+.55*(1-yang), tx=bx+(ex-bx)*f, ty=by+(ey-by)*f;
-    const ang=Math.atan2(ty-by,tx-bx), nx=-Math.sin(ang), ny=Math.cos(ang), w0=3.2*k*1.4, w1=(7+12*(1-yang))*k*1.4;
-    g.save();g.filter=`blur(${Math.max(1.5,2.4*k)}px)`;
-    const sg=g.createLinearGradient(bx,by,tx,ty);sg.addColorStop(0,`rgba(38,30,24,${.62-.12*yang})`);sg.addColorStop(1,`rgba(38,30,24,${.1+.12*(1-yang)})`);
+    const ux=-308, uy=164, ul=Math.hypot(ux,uy), len=ratio*235/1215*W;
+    const tx=bx+ux/ul*len, ty=by+uy/ul*len, nx=-uy/ul, ny=ux/ul, w0=3.4*k*1.4, w1=(4.2+2.6*ratio)*k*1.4;
+    g.save();g.filter=`blur(${Math.max(1,(1.2+ratio*1.6)*k)}px)`;
+    const sg=g.createLinearGradient(bx,by,tx,ty);sg.addColorStop(0,`rgba(38,30,24,${.7-.08*(1-yang)})`);sg.addColorStop(1,`rgba(38,30,24,${.22+.1*yang})`);
     g.fillStyle=sg;g.beginPath();g.moveTo(bx+nx*w0,by+ny*w0);g.lineTo(tx+nx*w1,ty+ny*w1);g.lineTo(tx-nx*w1,ty-ny*w1);g.lineTo(bx-nx*w0,by-ny*w0);g.closePath();g.fill();g.restore();
-    if(sunEl){sunEl.style.top=(58+(1-yang)*100).toFixed(2)+"%";sunEl.style.filter=`brightness(${(.85+.25*yang).toFixed(3)})`}
-    if(nightEl)nightEl.style.opacity=((1-yang)*.16).toFixed(3);
-    sector(yin0,yin1,"46,36,30",.3);
-    sector(yang0,yang1,"238,198,126",.4);
+    /* sun: high and pale-bright in summer, lower and warmer over the hills in winter; it never sets at noon */
+    if(sunEl){sunEl.style.top=(45.6+(1-yang)*22).toFixed(2)+"%";sunEl.style.filter=`brightness(${(.88+.2*yang).toFixed(3)}) saturate(${(1.15-.3*yang).toFixed(3)})`}
+    if(nightEl)nightEl.style.opacity=((1-yang)*.12).toFixed(3);
     g.filter="none";
     /* the sun walking its year, with a fading trail */
     for(let i=60;i>=0;i--){const a=head-i*.022,[x,y]=pt(a),f=1-i/60;

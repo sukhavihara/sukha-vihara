@@ -402,4 +402,84 @@
           </a>
           <!-- YouTube -->
           <a href="https://www.youtube.com/@sukhavihara" target="_blank" aria-label="YouTube">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-col-title">Rituals</p>
+        <a class="foot-link" href="https://shop.sukhavihara.com/" target="_blank">All Products</a>
+        <a class="foot-link" href="https://shop.sukhavihara.com/collections/quiet-mornings" target="_blank">Quiet Mornings</a>
+        <a class="foot-link" href="https://shop.sukhavihara.com/collections/facial-release" target="_blank">Facial Release</a>
+        <a class="foot-link" href="https://shop.sukhavihara.com/collections/body-poise" target="_blank">Body Poise</a>
+        <a class="foot-link" href="https://shop.sukhavihara.com/collections/evening-restoration" target="_blank">Evening Restoration</a>
+      </div>
+      <div>
+        <p class="foot-col-title">About</p>
+        <a class="foot-link" href="#philosophy">Our Story</a>
+        <a class="foot-link" href="#philosophy">Philosophy</a>
+        <a class="foot-link" href="#philosophy">Ingredients</a>
+        <a class="foot-link" href="#philosophy">Sustainability</a>
+      </div>
+      <div>
+        <p class="foot-col-title">The Ritual Letter</p>
+        <p class="foot-desc">Soft notes on ritual, rest, and the art of slowing down.</p>
+        <input class="foot-input" type="email" placeholder="your@email.com" />
+        <button class="foot-btn">Subscribe</button>
+      </div>
+    </div>
+    <div class="foot-divider"></div>
+    <div class="foot-bottom">
+      <p class="foot-copy">© 2025 Sukha Vihara. All rights reserved.</p>
+      <p class="foot-tagline">Soft Ritual Living</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const cards = track.querySelectorAll('.prod-card');
+  const dotsWrap = document.getElementById('carouselDots');
+  const total = cards.length;
+  const perPage = 2;
+  const pages = Math.ceil(total / perPage);
+  let current = 0;
+
+  // Create dots
+  for (let i = 0; i < pages; i++) {
+    const d = document.createElement('div');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  }
+
+  function getCardWidth() {
+    return cards[0].offsetWidth + 32; // card width + margin
+  }
+
+  function goTo(page) {
+    current = ((page % pages) + pages) % pages;
+    track.style.transform = `translateX(-${current * perPage * getCardWidth()}px)`;
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+
+  // Auto-play
+  setInterval(() => goTo(current + 1), 4000);
+</script>
+</body>
+</html>
