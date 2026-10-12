@@ -316,20 +316,58 @@ footer{background:var(--ink);color:var(--cream);padding-block:64px 36px}
   .row .lab .e{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;animation:none!important}}
+
+/* ===== Brand-homepage styling for nav + hero ===== */
+nav#topnav{position:fixed;top:0;left:0;right:0;z-index:50;height:76px;padding:env(safe-area-inset-top,0px) 60px 0;display:flex;align-items:center;justify-content:space-between;background:transparent;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+nav#topnav.scrolled{background:rgba(245,240,232,.95);backdrop-filter:blur(12px);border-bottom-color:rgba(196,181,160,.3)}
+.nav-home{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:400;letter-spacing:.12em;color:var(--ink);opacity:0;transition:opacity .4s}
+nav#topnav.scrolled .nav-home{opacity:1}
+.nav-links{display:flex;gap:44px;align-items:center}
+.nav-links a{font-family:'Work Sans',sans-serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;font-weight:300;color:rgba(245,240,232,.75);transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current]{color:#F5F0E8}
+nav#topnav.scrolled .nav-links a{color:#7A6E65}
+nav#topnav.scrolled .nav-links a:hover,nav#topnav.scrolled .nav-links a[aria-current]{color:#2D2D2D}
+.nav-cart{display:flex}
+main#quiz,main#result{padding-top:76px}
+
+.hero-band{min-height:100vh;display:flex;align-items:center;background:#2a221c}
+.hero-band::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(26,20,16,.42) 0%,rgba(30,24,19,.38) 45%,rgba(26,20,16,.62) 100%)}
+.hero-band::after{display:block;content:"";position:absolute;left:0;right:0;bottom:0;height:300px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(245,240,232,0) 0%,rgba(222,212,197,.35) 35%,rgba(240,234,224,.8) 72%,#F5F0E8 100%)}
+.hero-bg{opacity:1;top:0;transform:translateX(-50%);width:max(100%,calc(100vh * 1.19));-webkit-mask-image:none;mask-image:none}
+.hero-bg img,.hero-bg canvas{filter:sepia(.25) saturate(.8) brightness(.95)}
+.hero2{position:relative;z-index:2;display:flex;align-items:flex-start;gap:80px;width:100%;padding:120px 80px 240px}
+.h2-brand a{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(26px,2.6vw,36px);font-weight:400;letter-spacing:.02em;line-height:1.1;color:#F5F0E8;text-shadow:0 2px 22px rgba(10,7,5,.5)}
+.h2-text{max-width:430px}
+.h2-eyebrow{display:block;font-family:'Work Sans',sans-serif;font-size:12px;letter-spacing:.04em;font-weight:300;color:rgba(245,240,232,.8);margin-bottom:16px;text-shadow:0 1px 10px rgba(10,7,5,.4)}
+.hero2 h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(26px,2.6vw,36px);font-weight:300;line-height:1.18;color:#F5F0E8;margin-bottom:24px;background:none;-webkit-text-fill-color:currentColor;max-width:none;text-shadow:0 2px 18px rgba(10,7,5,.5)}
+.h2-body{font-family:'Work Sans',sans-serif;font-size:13px;line-height:1.9;font-weight:300;color:rgba(245,240,232,.78);margin-bottom:38px;text-shadow:0 1px 10px rgba(10,7,5,.4)}
+.h2-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px 28px}
+.h2-cta{display:inline-flex;align-items:center;font-family:'Work Sans',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;font-weight:300;color:#F5F0E8;border:1px solid rgba(245,240,232,.5);padding:14px 28px;transition:all .3s}
+.h2-cta:hover{background:rgba(245,240,232,.12);border-color:#F5F0E8}
+.h2-link{font-family:'Work Sans',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:300;color:rgba(245,240,232,.7);border-bottom:1px solid rgba(245,240,232,.3);padding-bottom:3px}
+.h2-link:hover{color:#F5F0E8}
+.h2-meta{margin-top:34px;font-family:'Work Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:300;color:rgba(245,240,232,.55)}
+.start{background:var(--cream)}
+@media (max-width:900px){
+  nav#topnav{padding-inline:24px}.nav-links a:not(#navTest):not(.nav-cart){display:none}.nav-links{gap:24px}
+  .hero2{flex-direction:column;justify-content:flex-end;gap:28px;padding:120px 28px 190px}
+  .hero-band::after{height:200px}
+  .h2-brand a{font-size:clamp(30px,8vw,40px)}.h2-brand br{display:none}
+  .hero2 h1{font-size:clamp(26px,7vw,34px)}.h2-text{max-width:100%}
+  .hero-band{align-items:flex-end}
+}
 </style>
 </head>
 <body style="margin:0">
-<nav>
-  <div class="wrap">
-    <a class="logo" href="https://sukhavihara.com/">Sukha Vihara</a>
-    <div class="nav-r">
-      <div class="navlinks">
-        <a href="#types">The Nine Types</a>
-        <a href="https://sukhavihara.com/journal.html">Journal</a>
-        <a href="https://shop.sukhavihara.com/">Rituals</a>
-      </div>
-      <button class="nav-btn" id="navTest">Free Test →</button>
-    </div>
+<nav id="topnav">
+  <a class="nav-home" href="https://sukhavihara.com/" aria-label="Sukha Vihara home">Sukha Vihara</a>
+  <div class="nav-links">
+    <a href="https://sukhavihara.com/#philosophy">Philosophy</a>
+    <a href="https://shop.sukhavihara.com/">Rituals</a>
+    <a href="https://sukhavihara.com/journal.html">Journal</a>
+    <a href="#start" id="navTest" aria-current="page">Discover Your Body</a>
+    <a href="https://shop.sukhavihara.com/collections/all">Collections</a>
+    <a class="nav-cart" href="https://shop.sukhavihara.com/cart" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></a>
   </div>
 </nav>
 
@@ -341,20 +379,17 @@ footer{background:var(--ink);color:var(--cream);padding-block:64px 36px}
       <span class="sunglow"></span><span class="mist m1"></span><span class="mist m2"></span>
       <canvas id="heroFlow"></canvas>
     </div>
-    <div class="wrap">
-      <div class="hero">
-        <p class="eyebrow">Traditional Chinese Medicine · Personal Assessment</p>
-        <h1>What's Your TCM Body Constitution?</h1>
-        <p class="lede">Based on China's national standard for constitution assessment, GB/T 46939—2025. Discover which of the nine body types is yours, and how to care for it day to day.</p>
-        <div class="badges">
-          <span class="badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>3 minutes</span>
-          <span class="badge"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>100% private</span>
-          <span class="badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a4.5 4.5 0 0 1 0 9a4.5 4.5 0 0 0 0 9"/></svg>9 body types</span>
-          <span class="badge"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>GB/T 46939 standard</span>
+    <div class="hero2">
+      <div class="h2-brand"><a href="https://sukhavihara.com/">Sukha <br>Vihara</a></div>
+      <div class="h2-text">
+        <span class="h2-eyebrow">Eastern wellness · the nine constitutions</span>
+        <h1>Listen to the nature of your body.</h1>
+        <p class="h2-body">In Chinese medicine, every body carries its own nature: how it holds warmth, keeps its moisture, and moves through feeling. Twenty-six quiet questions to help you meet yours.</p>
+        <div class="h2-actions">
+          <a class="h2-cta" href="#start">Begin the reading &nbsp;→</a>
+          <a class="h2-link" href="#types">Explore the nine constitutions</a>
         </div>
-        <a class="cta" href="#start">Discover My Body Type ↓</a>
-        <a class="sublink" href="#types">Or explore the nine types →</a>
-        <div class="hero-types" id="heroTypes" aria-label="The nine constitutions"></div>
+        <p class="h2-meta">Three minutes &nbsp;·&nbsp; Private &nbsp;·&nbsp; Based on GB/T 46939—2025</p>
       </div>
     </div>
   </section>
@@ -681,10 +716,10 @@ function renderTypes(){
   $("orbitRing").innerHTML=parts.slice(1).join("");
   drawTaiji($("typeGrid").querySelector("canvas"));
   const order=["balanced","yinxu","shire","qiyu","qixu","yangxu","tanshi","xueyu","tebing"];
-  $("heroTypes").innerHTML=order.map(k=>k==="balanced"
+  if($("heroTypes")){$("heroTypes").innerHTML=order.map(k=>k==="balanced"
     ?`<button class="htype tj" data-k="balanced" title="Balanced · 平和" aria-label="Balanced"></button>`
     :`<button class="htype${LIGHT.includes(k)?" light":""}" data-k="${k}" style="--c:${TONE[k]}" title="${TYPES[k].en} · ${TYPES[k].cn}" aria-label="${TYPES[k].en}">${guaHTML(GUA[k][4])}</button>`).join("");
-  $("heroTypes").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(!b)return;showDetail(b.dataset.k,false);$("types").scrollIntoView({behavior:"smooth"})});
+  $("heroTypes").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(!b)return;showDetail(b.dataset.k,false);$("types").scrollIntoView({behavior:"smooth"})});}
   $("typeGrid").addEventListener("click",e=>{const b=e.target.closest("[data-k]");if(b)showDetail(b.dataset.k,window.innerWidth<860)});
 }
 function detailHTML(k){
@@ -847,6 +882,10 @@ renderTypes();showDetail("balanced",false);
   }
   requestAnimationFrame(tick);
 })();
+
+/* Nav: transparent over the hero like the brand homepage, solid once you scroll or leave the home view */
+(function(){const n=$("topnav");const upd=()=>n.classList.toggle("scrolled",scrollY>40||$("home").hidden);
+  addEventListener("scroll",upd,{passive:true});new MutationObserver(upd).observe($("home"),{attributes:true,attributeFilter:["hidden"]});upd();})();
 </script>
 </body>
 </html>
