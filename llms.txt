@@ -1,0 +1,46 @@
+# Sukha Vihara
+
+> Sukha Vihara is an Eastern wellness brand that makes Traditional Chinese Medicine (TCM) self-care easy to understand and practise in modern daily life. It publishes beginner-friendly English guides to TCM ideas (body constitutions, everyday Chinese herbs, home self-care rituals) and sells handcrafted TCM-inspired self-care tools: wooden scalp massage combs, gua sha, wormwood (mugwort) tapping hammers, acupressure pebble slippers and wooden eye massagers. Tagline: "Ancient Eastern Wisdom, Made for Modern Life."
+
+Key facts:
+- Brand name: Sukha Vihara (always two words). Based in Bangkok, Thailand; ships worldwide, mainly to Australia, the US, the UK and Europe.
+- Brand values: Poise, Steadiness, Softness. Approach: knowledge first, daily ritual as practice, products as tools for that practice.
+- Content principle: Sukha Vihara describes traditional Chinese wellness practices for education and relaxation. Its products are not medical devices and its guides are not medical advice.
+- Brand site: https://www.sukhavihara.com — Online store: https://shop.sukhavihara.com
+- Customer service: zouc572@outlook.com (replies within 3 business days)
+
+## TCM guides (in-depth English pages)
+
+- [The Nine TCM Body Constitutions: A Beginner's Guide](https://shop.sukhavihara.com/pages/nine-tcm-body-constitutions): What the nine constitutions (Wang Qi system, national standard GB/T 46939—2025) are, how each is described, and daily habits associated with each.
+- [A Beginner's Guide to TCM Self-Care Tools](https://shop.sukhavihara.com/pages/tcm-self-care-tools-guide): Wooden combs, gua sha, meridian tapping hammers, acupressure pebble slippers and eye massagers: origins, how to use them, safety and care.
+- [Chinese Herbs for Beginners: 10 Everyday Kitchen Herbs](https://shop.sukhavihara.com/pages/chinese-herbs-for-beginners): The "food and medicine share the same source" idea, TCM nature and flavour, and ten gentle herbs (goji, red date, ginger, chrysanthemum, Chinese yam and more) with simple recipes and safety notes.
+- [Daily TCM Self-Care Rituals for Home](https://shop.sukhavihara.com/pages/daily-tcm-self-care-rituals): Morning-to-night rituals from Chinese self-care tradition (scalp combing, tapping, eye rest, gua sha, the evening foot soak) plus seasonal adjustments.
+- [Discover Your Body](https://www.sukhavihara.com/discover-your-body): Free online TCM body constitution reading, 26 questions, about three minutes, based on GB/T 46939—2025.
+
+## Self-care tools
+
+- [Wormwood Massage Hammer](https://shop.sukhavihara.com/products/wormwood-massage-hammer-meridian-tapping-suitable-for-multiple-body-parts): Soft hammer filled with dried wormwood (mugwort) for gentle meridian tapping on shoulders, back, arms and legs.
+- [Acupressure Pebble Massage Slippers](https://shop.sukhavihara.com/products/natural-pebble-foot-massage-slippers): Unisex slippers set with natural river pebbles for at-home acupressure-style foot massage.
+- [Brass & Wood Gua Sha Tool](https://shop.sukhavihara.com/products/brass-wood-gua-sha-massage-tool-full-body-scraping-board-for-belly-legs-shoulders-back): Weighted wood and brass body gua sha tool, usable warm or cool.
+- [2-in-1 Massage Comb & Gua Sha](https://shop.sukhavihara.com/products/sukha-vihara-wooden-meridian-scalp-massage-comb-gua-sha-scraper): Solid hardwood scalp massage comb with horn teeth and a horn gua sha edge.
+- [Sandalwood Scalp Massage Comb](https://shop.sukhavihara.com/products/sukha-vihara-sandalwood-scalp-massage-comb): Five ball-tipped teeth and a forked tip for focused scalp, temple and neck massage.
+- [Lotus Massage Comb](https://shop.sukhavihara.com/products/sukha-vihara-lotus-scalp-massage-comb-natural-hardwood-horn-anti-static-head-neck-body-massager): Lotus-leaf shaped hardwood comb with horn teeth, held between the fingertips.
+- [Horn Massage Comb](https://shop.sukhavihara.com/products/sukha-vihara-african-blackwood-pointed-horn-comb-lignum-vitae-wood-horn-massage-comb-natural-hardwood-scalp-body-massager-portable-travel-comb): Compact hardwood comb with 11 rounded horn teeth, in African blackwood or lignum vitae.
+- [Ebony Massage Hair Brush](https://shop.sukhavihara.com/products/natural-ebony-wood-cushioned-massage-hair-brush-anti-static-detangling-paddle-brush-for-scalp-massage-1): Cushioned ebony wood brush in paddle or round shape.
+- [Rosewood Wide-Tooth Comb](https://shop.sukhavihara.com/products/sukha-vihara-rosewood-wide-tooth-comb): Unfinished African rosewood comb for detangling and gentle scalp massage.
+- [Sandalwood Wide-Tooth Comb](https://shop.sukhavihara.com/products/sukha-vihara-premium-sandalwood-wide-tooth-comb): Hand-carved from a single piece of natural sandalwood.
+- [Golden Sandalwood & Brass Wide-Tooth Comb](https://shop.sukhavihara.com/products/sukha-vihara-golden-sandalwood-brass-wide-tooth-comb): Golden sandalwood comb with teardrop brass teeth.
+- [Wooden Eye Massager Set](https://shop.sukhavihara.com/products/massage-for-eyes): Wooden set for gentle massage around the brow, temples and eye contour.
+- [All products](https://shop.sukhavihara.com/collections/all)
+
+## About
+
+- [About Sukha Vihara](https://shop.sukhavihara.com/pages/about): Brand story and philosophy.
+- [FAQ](https://shop.sukhavihara.com/pages/faq): Common questions about the brand, products and TCM self-care.
+- [Contact](https://shop.sukhavihara.com/pages/contact)
+
+## Optional
+
+- [Refund policy](https://shop.sukhavihara.com/policies/refund-policy)
+- [Privacy policy](https://shop.sukhavihara.com/policies/privacy-policy)
+- [Store agent guide (Shopify)](https://shop.sukhavihara.com/llms.txt): Machine shopping instructions for the online store.
